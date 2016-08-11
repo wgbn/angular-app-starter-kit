@@ -1,0 +1,48 @@
+{
+  "name": "cdo-informativo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "camelcase": "^3.0.0",
+    "capitalize": "^1.0.0",
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-util": "^3.0.7",
+    "gulp-uglify": "^2.0.0",
+    "shelljs": "^0.7.3",
+    "yargs": "^4.8.1"
+  },
+  "devDependencies": {
+    "camelcase": "^3.0.0",
+    "capitalize": "^1.0.0",
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "shelljs": "^0.7.3",
+    "yargs": "^4.8.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/wgbn/cdo-informativo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/wgbn/cdo-informativo#readme"
+}

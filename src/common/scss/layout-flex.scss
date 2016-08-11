@@ -1,0 +1,46 @@
+@import "flex";
+
+/////// extends
+
+%flex-center-center {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+}
+
+%flex-center-left {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(flex-start);
+}
+
+%flex-center-right {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(flex-end);
+}
+
+%flex-top-center {
+    @include flexbox;
+    @include align-items(flex-start);
+    @include justify-content(center);
+}
+
+%cover {
+    background-size: cover;
+    background-position: center center;
+}
+
+/////// classes
+
+.layout-c-c {
+    @extend %flex-center-center;
+}
+
+.layout-c-l {
+    @extend %flex-center-left;
+}
+
+.layout-c-r {
+    @extend %flex-center-right;
+}

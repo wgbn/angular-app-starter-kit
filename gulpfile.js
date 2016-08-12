@@ -116,6 +116,7 @@ gulp.task('diretiva', function () {
     var path = argv.path || 'common/directives';
     var cls = argv.class || nome;
     var desc = argv.desc || 'Diretiva para exibir um component na tela';
+    path += '/'+nome;
 
     gulp.src(['modelos/directive.js'])
         .pipe(replace('[[func]]', func))

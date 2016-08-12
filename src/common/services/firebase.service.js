@@ -20,7 +20,7 @@
             apiKey: "AIzaSyDOkbjd0LGJ8SfrGWIweXG5X4eAqic0ETs",
             authDomain: "viva-salute.firebaseapp.com",
             databaseURL: "https://viva-salute.firebaseio.com",
-            storageBucket: "viva-salute.appspot.com",
+            storageBucket: "viva-salute.appspot.com"
         };
         firebase.initializeApp(config);
 

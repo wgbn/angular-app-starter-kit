@@ -2,3 +2,4 @@ node_modules
 webdist
 .tmp
 .sass-cache
+.idea

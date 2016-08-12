@@ -15,7 +15,7 @@
     function [[func]]Config ($routeProvider) {
         $routeProvider
             .when('/[[rota]]', {
-                templateUrl: '[[path]]/[[nome]].html',
+                templateUrl: '[[path]]/[[nome]]/[[nome]].html',
                 controller: '[[func]]Ctrl',
                 controllerAs: 'vm'
             });

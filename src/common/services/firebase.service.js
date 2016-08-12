@@ -1,14 +1,20 @@
 (function(){
     "use strict";
 
-    angular.module('cdo-informativo')
+    /**
+     * Service para caso queira usar o Firebase em seu aplicativo [recomendado]
+     * Firebase é um serviço de Real-time Database que torna aplicações angular reativas
+     * https://console.firebase.google.com/
+     */
+
+    angular.module('app')
         .factory('FireService', _fireService);
 
     /////////////////////////////
 
     /**
      * Função que cria o factory FireService
-     * @memberof cdo-informativo
+     * @memberof app
      * @function _fireService
      * @param {Object} $firebaseArray
      * @param {Object} $firebaseObject
@@ -17,14 +23,14 @@
     function _fireService ($firebaseArray, $firebaseObject) {
         // locais
         var config = {
-            apiKey: "AIzaSyDOkbjd0LGJ8SfrGWIweXG5X4eAqic0ETs",
-            authDomain: "viva-salute.firebaseapp.com",
-            databaseURL: "https://viva-salute.firebaseio.com",
-            storageBucket: "viva-salute.appspot.com"
+            apiKey: "[api-key]",
+            authDomain: "[app-name].firebaseapp.com",
+            databaseURL: "https://[app-name].firebaseio.com",
+            storageBucket: "[app-name].appspot.com"
         };
         firebase.initializeApp(config);
 
-        var _root = firebase.database().ref().child('informtivo');
+        var _root = firebase.database().ref().child('[root]');
 
         // interface
         var _return = {
@@ -41,7 +47,7 @@
          * @function _init
          */
         function _init () {
-            //
+            // inicializa o serviço
         }
     }
     _fireService.$inject = ['$firebaseArray', '$firebaseObject'];

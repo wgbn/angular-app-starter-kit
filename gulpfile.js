@@ -80,32 +80,32 @@ gulp.task('git-check', function(done) {
 
 gulp.task('tela', function() {
     var nome = argv.name || 'tela';
-    var state = argv.state || 'app.'+nome;
+    var rota = argv.rota || nome;
     var cls = argv.class || 'tela-'+nome;
     var path = argv.path || 'telas';
 
-    gulp.src(['src/modelo/controller.js'])
-        .pipe(replace('{{ ctrl }}', capitalize.words(camelCase(nome))))
+    gulp.src(['modelos/page-controller.js'])
+        .pipe(replace('[[ctrl]]', capitalize.words(camelCase(nome))))
         .pipe(rename({ basename: nome, extname: '.controller.js' }))
         .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
 
-    gulp.src(['src/modelo/router.js'])
-        .pipe(replace('{{ func }}', capitalize.words(camelCase(nome))))
-        .pipe(replace('{{ nome }}', nome))
-        .pipe(replace('{{ state }}', state))
-        .pipe(replace('{{ path }}', path))
+    gulp.src(['modelos/page-route.js'])
+        .pipe(replace('[[func]]', capitalize.words(camelCase(nome))))
+        .pipe(replace('[[nome]]', nome))
+        .pipe(replace('[[rota]]', rota))
+        .pipe(replace('[[path]]', path))
         .pipe(rename({ basename: nome, extname: '.router.js' }))
         .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
 
-    gulp.src(['src/modelo/style.scss'])
-        .pipe(replace('{{ class }}', cls))
+    gulp.src(['modelos/page-style.scss'])
+        .pipe(replace('[[class]]', cls))
         .pipe(rename({ basename: nome }))
         .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
 
-    gulp.src(['src/modelo/page.html'])
-        .pipe(replace('{{ titulo }}', capitalize.words(nome)))
-        .pipe(replace('{{ nome }}', nome))
-        .pipe(replace('{{ class }}', cls))
+    gulp.src(['modelos/page-template.html'])
+        .pipe(replace('[[titulo]]', capitalize.words(nome)))
+        .pipe(replace('[[nome]]', nome))
+        .pipe(replace('[[class]]', cls))
         .pipe(rename({ basename: nome }))
         .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
 });
@@ -115,21 +115,23 @@ gulp.task('diretiva', function () {
     var func = camelCase(nome);
     var path = argv.path || 'common/directives';
     var cls = argv.class || nome;
+    var desc = argv.desc || 'Diretiva para exibir um component na tela';
 
-    gulp.src(['src/modelo/directive.js'])
-        .pipe(replace('{{ func }}', func))
-        .pipe(replace('{{ nome }}', nome))
-        .pipe(replace('{{ path }}', path))
+    gulp.src(['modelos/directive.js'])
+        .pipe(replace('[[func]]', func))
+        .pipe(replace('[[nome]]', nome))
+        .pipe(replace('[[path]]', path))
+        .pipe(replace('[[desc]]', desc))
         .pipe(rename({ basename: nome, extname: '.directive.js' }))
         .pipe(gulp.dest('src/'+path+'/'));
 
-    gulp.src(['src/modelo/directive.html'])
-        .pipe(replace('{{ class }}', cls))
+    gulp.src(['modelos/directive.html'])
+        .pipe(replace('[[class]]', cls))
         .pipe(rename({ basename: nome, extname: '.directive.html' }))
         .pipe(gulp.dest('src/'+path+'/'));
 
-    gulp.src(['src/modelo/style.scss'])
-        .pipe(replace('{{ class }}', cls))
+    gulp.src(['modelos/page-style.scss'])
+        .pipe(replace('[[class]]', cls))
         .pipe(rename({ basename: nome, extname: '.directive.scss' }))
         .pipe(gulp.dest('src/'+path+'/'));
 });
@@ -138,15 +140,13 @@ gulp.task('service', function () {
     var nome = argv.name || 'servico';
     var serv = capitalize.words(camelCase(nome));
     var desc = argv.desc || 'Um service factory angular';
-    var func = argv.func || 'get';
-    func = camelCase(func)
+    var path = argv.path || 'common/services';
 
-    gulp.src(['src/modelo/service.js'])
-        .pipe(replace('{{ func }}', func))
-        .pipe(replace('{{ name }}', serv))
-        .pipe(replace('{{ desc }}', desc))
+    gulp.src(['modelos/service.js'])
+        .pipe(replace('[[nome]]', serv))
+        .pipe(replace('[[desc]]', desc))
         .pipe(rename({ basename: nome, extname: '.service.js' }))
-        .pipe(gulp.dest('src/common/services/'));
+        .pipe(gulp.dest('src/'+path+'/'));
 });
 
 gulp.task('serve', function () {

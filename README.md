@@ -23,6 +23,7 @@ gulp tela .................................. Cria uma nova tela no projeto. Uma 
     [--rota <nome-da-rota>] ................ O nome da rora para acessar a tela. ex.: --rota minhatela (no browser ficará /minhatela)
     [--class <nome-da-classe-css>] ......... O nome da classe para estilizar a tela. ex.: --class minha-classe
     [--path <caminho-para-instalação>] ..... O caminho de criação da tela. ex.: --path telas/post (o path padão é 'telas')
+    [--app <nome-do-app>] .................. O nome do seu app. ex.: --app my-app (o padrão é 'app')
     
     Exemplo de comando:
     gulp tela --name minha-tela --rota minhatela --class minha-classe --path telas/post
@@ -35,6 +36,9 @@ gulp diretiva .............................. Cria uma nova diretiva no projeto. 
     [--desc <descricao>] ................... Uma descrição para a documentação da diretiva. ex.: --desc "este é meu component"
     [--class <nome-da-classe-css>] ......... O nome da classe para estilizar a diretiva. ex.: --class minha-classe
     [--path <caminho-para-instalação>] ..... O caminho de criação da diretiva. ex.: --path telas/post (o path padão é 'common/directives' para diretivas globais)
+    [--app <nome-do-app>] .................. O nome do seu app. ex.: --app my-app (o padrão é 'app')
+    [--vm <nove-da-view-model>] ............ O nome da view-model que será usada no ContellerAs. ex.: --vm vm (o padrão é 'vm')
+    [--scope "<nome-do-paramatro>: '<tipo>'"] . O parametro recebido pela diretiva e o seu tipo. ex.: --scope "slide: '='"
     
     Exemplo de comando:
     gulp diretiva --name meu-componente --desc "um componente" --class minha-classe --path telas/post
@@ -46,6 +50,7 @@ gulp service ............................... Cria um novo serviço no projeto. U
     [--name <nome-do-servico>] ............. O nome do serviço a ser criado. ex.: --name meu-servico
     [--desc <descricao>] ................... Uma descrição para a documentação do serviço. ex.: --desc "este é meu serviço"
     [--path <caminho-para-instalação>] ..... O caminho de criação do serviço. ex.: --path telas/post (o path padão é 'common/services' para serviços globais)
+    [--app <nome-do-app>] .................. O nome do seu app. ex.: --app my-app (o padrão é 'app')
     
     Exemplo de comando:
     gulp service --name meu-servico --desc "um serviço" --path telas/post

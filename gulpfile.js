@@ -83,6 +83,7 @@ gulp.task('tela', function() {
     var rota = argv.rota || nome;
     var cls = argv.class || 'tela-'+nome;
     var path = argv.path || 'telas';
+    var app = argv.app || 'app';
 
     gulp.src(['modelos/page-controller.js'])
         .pipe(replace('[[ctrl]]', capitalize.words(camelCase(nome))))
@@ -94,6 +95,7 @@ gulp.task('tela', function() {
         .pipe(replace('[[nome]]', nome))
         .pipe(replace('[[rota]]', rota))
         .pipe(replace('[[path]]', path))
+        .pipe(replace('[[app]]', app))
         .pipe(rename({ basename: nome, extname: '.router.js' }))
         .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
 
@@ -116,6 +118,9 @@ gulp.task('diretiva', function () {
     var path = argv.path || 'common/directives';
     var cls = argv.class || nome;
     var desc = argv.desc || 'Diretiva para exibir um component na tela';
+    var vm = argv.vm || 'vm';
+    var scope = argv.scope || "[scopo]: '[tipo-escopo]'";
+    var app = argv.app || 'app';
     path += '/'+nome;
 
     gulp.src(['modelos/directive.js'])
@@ -123,6 +128,9 @@ gulp.task('diretiva', function () {
         .pipe(replace('[[nome]]', nome))
         .pipe(replace('[[path]]', path))
         .pipe(replace('[[desc]]', desc))
+        .pipe(replace('[[vm]]', vm))
+        .pipe(replace('[[scope]]', scope))
+        .pipe(replace('[[app]]', app))
         .pipe(rename({ basename: nome, extname: '.directive.js' }))
         .pipe(gulp.dest('src/'+path+'/'));
 
@@ -142,14 +150,12 @@ gulp.task('service', function () {
     var serv = capitalize.words(camelCase(nome));
     var desc = argv.desc || 'Um service factory angular';
     var path = argv.path || 'common/services';
+    var app = argv.app || 'app';
 
     gulp.src(['modelos/service.js'])
         .pipe(replace('[[nome]]', serv))
         .pipe(replace('[[desc]]', desc))
+        .pipe(replace('[[app]]', app))
         .pipe(rename({ basename: nome, extname: '.service.js' }))
         .pipe(gulp.dest('src/'+path+'/'));
-});
-
-gulp.task('serve', function () {
-    sh.exec('ionic serve -b');
 });

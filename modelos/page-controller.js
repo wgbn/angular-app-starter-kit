@@ -1,14 +1,14 @@
 (function(){
     "use strict";
 
-    angular.module('app')
+    angular.module('[[app]]')
         .controller('[[ctrl]]Ctrl', [[ctrl]]Ctrl);
 
     ////////////////////////////
 
     /**
      * Função que define o controller da tela
-     * @memberof app
+     * @memberof [[app]]
      * @function [[ctrl]]Ctrl
      * @param {Object} $scope
      */

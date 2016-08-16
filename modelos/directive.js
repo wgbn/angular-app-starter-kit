@@ -7,11 +7,11 @@
     * @version 1.0.0
     */
     angular
-        .module('app')
+        .module('[[app]]')
         .directive('[[func]]', [[func]]);
 
     /**
-    * @memberof app
+    * @memberof [[app]]
     * @ngdoc directive
     * @scope {} (Options are true for a new inherited scope, false for shared scope, and either {} or object for isolate scope.)
     * @restrict E ([E]lement, [A]ttribute, and [C]lass, use @restrict ECA)
@@ -39,11 +39,12 @@
                 //      nome: '@',
                 //      post: '=',
                 //      acao: '&',
-                [scopo]: '[tipo-escopo]'
+                //[scopo]: '[tipo-escopo]',
+                [[scope]]
             },
             link: link[[func]],
             controller: ctrl[[func]],
-            controllerAs: 'vm'
+            controllerAs: '[[vm]]'
         };
 
         return directive;
@@ -57,9 +58,9 @@
      * @param {service} scope       scopo do elemento
      * @param {service} el          elemento raiz da diretiva
      * @param {service} attr        atributos do elemento
-     * @param {MapController} vm    [[func]] controller
+     * @param {MapController} [[vm]]    [[func]] controller
      */
-    function link[[func]] (scope, el, attr, vm) {
+    function link[[func]] (scope, el, attr, [[vm]]) {
         // manipulação do DOM da diretiva
     }
 
@@ -71,13 +72,13 @@
      * @param {Object} $scope
      */
     function ctrl[[func]] ($scope) {
-        var vm = this;
+        var [[vm]] = this;
 
         // bindings
-        vm.nome = '[[nome]]';
+        [[vm]].nome = '[[nome]]';
 
         // ações
-        vm.acao = _acao;
+        [[vm]].acao = _acao;
 
         // init
         __init();

@@ -8,14 +8,14 @@
     * @version 1.0.0
     */
     angular
-        .module('app')
+        .module('[[app]]')
         .factory('[[nome]]', [[nome]]);
 
     /** injeção de dependencias do service **/
     [[nome]].$inject = [/* inclua aqui os módulos para injeção de dependências */];
 
     /**
-    * @memberof app
+    * @memberof [[app]]
     * @ngdoc factory
     * @name [[nome]]
     * @param {}

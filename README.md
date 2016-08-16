@@ -31,13 +31,13 @@ gulp tela .................................. Cria uma nova tela no projeto. Uma 
 
 ### Criação de diretivas
 ```
-gulp diretiva .............................. Cria uma nova diretiva no projeto. Uma diretiva possui um controller, um style e um template
-    [--name <nome-da-diretiva>] ............ O nome da diretiva a ser criada. ex.: --name meu-componente
-    [--desc <descricao>] ................... Uma descrição para a documentação da diretiva. ex.: --desc "este é meu component"
-    [--class <nome-da-classe-css>] ......... O nome da classe para estilizar a diretiva. ex.: --class minha-classe
-    [--path <caminho-para-instalação>] ..... O caminho de criação da diretiva. ex.: --path telas/post (o path padão é 'common/directives' para diretivas globais)
-    [--app <nome-do-app>] .................. O nome do seu app. ex.: --app my-app (o padrão é 'app')
-    [--vm <nove-da-view-model>] ............ O nome da view-model que será usada no ContellerAs. ex.: --vm vm (o padrão é 'vm')
+gulp diretiva ................................. Cria uma nova diretiva no projeto. Uma diretiva possui um controller, um style e um template
+    [--name <nome-da-diretiva>] ............... O nome da diretiva a ser criada. ex.: --name meu-componente
+    [--desc <descricao>] ...................... Uma descrição para a documentação da diretiva. ex.: --desc "este é meu component"
+    [--class <nome-da-classe-css>] ............ O nome da classe para estilizar a diretiva. ex.: --class minha-classe
+    [--path <caminho-para-instalação>] ........ O caminho de criação da diretiva. ex.: --path telas/post (o path padão é 'common/directives' para diretivas globais)
+    [--app <nome-do-app>] ..................... O nome do seu app. ex.: --app my-app (o padrão é 'app')
+    [--vm <nove-da-view-model>] ............... O nome da view-model que será usada no ContellerAs. ex.: --vm vm (o padrão é 'vm')
     [--scope "<nome-do-paramatro>: '<tipo>'"] . O parametro recebido pela diretiva e o seu tipo. ex.: --scope "slide: '='"
     
     Exemplo de comando:

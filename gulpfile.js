@@ -87,6 +87,7 @@ gulp.task('tela', function() {
 
     gulp.src(['modelos/page-controller.js'])
         .pipe(replace('[[ctrl]]', capitalize.words(camelCase(nome))))
+        .pipe(replace('[[app]]', app)
         .pipe(rename({ basename: nome, extname: '.controller.js' }))
         .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
 

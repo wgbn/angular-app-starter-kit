@@ -19,13 +19,21 @@ var camelCase = require('camelcase');
 var paths = {
     sass: ['src/**/*.scss', '!src/modelo/*.scss'],
     js: ['src/**/*.js', '!src/modelo/*.js'],
-    html: ['src/**/*html', '!src/modelo/*.html']
+    html: ['src/**/*html', '!src/modelo/*.html'],
+    media: ['src/**/*.jpg', 'src/**/*.gif', 'src/**/*.png', 'src/**/*.mp4', 'src/**/*.webm', 'src/**/*.manifest']
 };
 
 gulp.task('default', ['watch']);
 
+gulp.task('build', ['dist', 'media', 'js', 'sass']);
+
 gulp.task('dist', function () {
     gulp.src(paths.html)
+        .pipe(gulp.dest('webdist'));
+});
+
+gulp.task('media', function () {
+    gulp.src(paths.media)
         .pipe(gulp.dest('webdist'));
 });
 
@@ -87,7 +95,7 @@ gulp.task('tela', function() {
 
     gulp.src(['modelos/page-controller.js'])
         .pipe(replace('[[ctrl]]', capitalize.words(camelCase(nome))))
-        .pipe(replace('[[app]]', app)
+        .pipe(replace('[[app]]', app))
         .pipe(rename({ basename: nome, extname: '.controller.js' }))
         .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
 
@@ -110,6 +118,76 @@ gulp.task('tela', function() {
         .pipe(replace('[[nome]]', nome))
         .pipe(replace('[[class]]', cls))
         .pipe(rename({ basename: nome }))
+        .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
+});
+
+gulp.task('tela-component', function() {
+    var nome = argv.name || 'tela';
+    var rota = argv.rota || '/'+nome;
+    var cls = argv.class || 'tela-'+nome;
+    var path = argv.path || 'components';
+    var app = argv.app || 'app';
+    var desc = argv.desc || 'Um componente que representa uma tela';
+
+    var func = camelCase(nome);
+    var ctrl = capitalize.words(func);
+
+    gulp.src(['modelos/page-component.js'])
+        .pipe(replace('[[ctrl]]', ctrl))
+        .pipe(replace('[[app]]', app))
+        .pipe(replace('[[desc]]', desc))
+        .pipe(replace('[[func]]', func))
+        .pipe(replace('[[rota]]', rota))
+        .pipe(replace('[[nome]]', nome))
+        .pipe(replace('[[path]]', path))
+        .pipe(rename({ basename: nome, extname: '.component.js' }))
+        .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
+
+    gulp.src(['modelos/page-style.scss'])
+        .pipe(replace('[[class]]', cls))
+        .pipe(rename({ basename: nome, extname: '.component.scss' }))
+        .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
+
+    gulp.src(['modelos/page-template.html'])
+        .pipe(replace('[[titulo]]', capitalize.words(nome)))
+        .pipe(replace('[[nome]]', nome))
+        .pipe(replace('[[class]]', cls))
+        .pipe(replace('vm.', '$ctrl.'))
+        .pipe(rename({ basename: nome, extname: '.component.html' }))
+        .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
+});
+
+gulp.task('component', function() {
+    var nome = argv.name || 'component';
+    var cls = argv.class || 'component-'+nome;
+    var path = argv.path || 'components';
+    var app = argv.app || 'app';
+    var desc = argv.desc || 'Um componente que representa um widget';
+
+    var func = camelCase(nome);
+    var ctrl = capitalize.words(func);
+
+    gulp.src(['modelos/component.js'])
+        .pipe(replace('[[ctrl]]', ctrl))
+        .pipe(replace('[[app]]', app))
+        .pipe(replace('[[desc]]', desc))
+        .pipe(replace('[[func]]', func))
+        .pipe(replace('[[nome]]', nome))
+        .pipe(replace('[[path]]', path))
+        .pipe(rename({ basename: nome, extname: '.component.js' }))
+        .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
+
+    gulp.src(['modelos/page-style.scss'])
+        .pipe(replace('[[class]]', cls))
+        .pipe(rename({ basename: nome, extname: '.component.scss' }))
+        .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
+
+    gulp.src(['modelos/page-template.html'])
+        .pipe(replace('[[titulo]]', capitalize.words(nome)))
+        .pipe(replace('[[nome]]', nome))
+        .pipe(replace('[[class]]', cls))
+        .pipe(replace('vm.', '$ctrl.'))
+        .pipe(rename({ basename: nome, extname: '.component.html' }))
         .pipe(gulp.dest('src/'+path+'/'+nome+'/'));
 });
 
